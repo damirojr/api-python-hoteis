@@ -1,2 +1,2 @@
-# api-python-hoteis
-Api desenvolvida em Python para fins de estudo.
+# Api_Python
+Api em desenvolvimento.
