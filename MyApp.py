@@ -1,9 +1,10 @@
 from flask import Flask
 from flask_restful import  Api
 from resources.hotel import Hoteis,  Hotel
-
+from flask_cors import CORS
 
 app =  Flask(__name__)
+CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///banco.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 api =  Api(app)
