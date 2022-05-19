@@ -1,6 +1,7 @@
 
 from flask_restful import Resource, reqparse
 from models.hotel import HotelModel
+import time
 
 
 
@@ -26,13 +27,13 @@ class Hotel(Resource):
         return {'message': 'Hotel not found.'}, 400
 
     def post(self, hotel_id):
-        if HotelModel.find_hotel(hotel_id):
-            return {"message": "Hotel id '{}' already exists." .format(hotel_id)},  #400bad request
+        # if HotelModel.find_hotel(hotel_id):
+        #     return {"message": "Hotel id '{}' already exists." .format(hotel_id)},  #400bad request
             
         dados = Hotel.argumentos.parse_args()
-        if dados.get('nome').strip() == '' :
-            return{'messagem': 'Os campos nao podem ficar em branco.'}
-        hotel = HotelModel(hotel_id, **dados)
+        # if dados.get('nome').strip() == '' :
+        #     return{'messagem': 'Os campos nao podem ficar em branco.'}
+        hotel = HotelModel(time.time(), **dados)
         try:
             hotel.save_hotel()
         except:

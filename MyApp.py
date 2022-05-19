@@ -16,7 +16,7 @@ def cria_banco():
 
 
 api.add_resource(Hoteis, '/hoteis')
-api.add_resource(Hotel, '/hoteis/<string:hotel_id>')
+api.add_resource(Hotel, '/hotel/<string:hotel_id>')
 
 
 if __name__=='__main__':
