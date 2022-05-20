@@ -38,7 +38,7 @@ const saveHotel = async () => {
 
         const json = await apiResponse.json();
 
-        if (json.id) {
+        if (json.hotel_id) {
             addHotel(hotel)
         
             resetForm()
