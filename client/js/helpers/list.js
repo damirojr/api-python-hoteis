@@ -73,7 +73,6 @@ const editHotel = (index) => {
     console.log(index)
 }
 
-
 const addHotel = hotel => {
     try {
         const validHotel = hotelModel.validate(hotel)
