@@ -42,7 +42,14 @@ const ListTemplate = (hoteis) => {
                     class="btn btn-outline-primary"
                     data-id="${index}"
                 >
-                    Editar
+                <i class="fa-solid fa-pen-to-square"></i>
+                </button>
+                <button
+                    onClick="deleteHotel(${index})"
+                    class="btn btn-outline-danger"
+                    data-id="${index}"
+                >
+                <i class="fa-solid fa-trash"></i>
                 </button>
             </td>
         </tr>`
@@ -72,6 +79,7 @@ const hotelModel = {
 const editHotel = (index) => {
     console.log(index)
 }
+
 
 const addHotel = hotel => {
     try {
