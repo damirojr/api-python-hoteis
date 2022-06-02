@@ -21,6 +21,24 @@ const resetForm = () => {
     diariaInput.value = ""
 }
 
+const addHotelApi = async hotel => {
+    return fetch("http://localhost:5000/hotel/new", {
+        method: "POST",
+        body: JSON.stringify(hotel),
+        headers: {"Content-type": "application/json; charset=UTF-8"}
+    })
+}
+
+const updateHotelApi = async hotel => {
+    hotel.hotel_id = hoteis[hotelIndex].hotel_id;
+
+    return fetch(`http://localhost:5000/hotel/${hotel.hotel_id}`, {
+        method: "PUT",
+        body: JSON.stringify(hotel),
+        headers: {"Content-type": "application/json; charset=UTF-8"}
+    })
+}
+
 const saveHotel = async () => {
     const hotel = {
         nome: nameInput.value,
@@ -30,19 +48,27 @@ const saveHotel = async () => {
     }
 
     try {
-        const apiResponse = await fetch("http://localhost:5000/hotel/new", {
-            method: "POST",
-            body: JSON.stringify(hotel),
-            headers: {"Content-type": "application/json; charset=UTF-8"}
-        })
+        let apiResponse;
+
+        if (hotelIndex !== null) {
+            apiResponse = await updateHotelApi(hotel)
+        } else {
+            apiResponse = await addHotelApi(hotel)
+        }
 
         const json = await apiResponse.json();
 
         if (json.hotel_id) {
-            addHotel(hotel)
-        
+            if (hotelIndex !== null) {
+                updateHotel(hotel)
+            } else {
+                addHotel(hotel)
+            }
+
             resetForm()
             addModal.hide()
+
+            hotelIndex = null;
         } else {
             throw new Error("Something went wrong adding this hotel :(")
         }

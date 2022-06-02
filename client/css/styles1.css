@@ -689,7 +689,7 @@ body.dark-theme {
   }
 
   .giving__container {
-    grid-template-columns: repeat(3, 142px);
+    grid-template-columns: repeat(2, 142px);
     justify-content: center;
     gap: 2.5rem 3.5rem;
   }
@@ -752,7 +752,7 @@ body.dark-theme {
   }
 
   .giving__container {
-    grid-template-columns: repeat(3, 210px);
+    grid-template-columns: repeat(2, 210px);
     column-gap: 5rem;
   }
 
